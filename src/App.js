@@ -6,11 +6,11 @@ import ImageGallery from './components/ImageGallery'
 
 export default class App extends Component {
   state= {
-    imageName: ''
+    imageName: '',
   }
 
-  handleFormSubmit = imageName => {
-    this.setState({ imageName });
+  handleFormSubmit = (imageName) => {
+    this.setState({ imageName});
   };
 
 
@@ -19,7 +19,7 @@ export default class App extends Component {
   return (
     <div className="App">
       <Searchbar onSubmit={this.handleFormSubmit} />
-      <ImageGallery imageName={this.state.imageName} />
+      <ImageGallery imageName={this.state.imageName}/>
      
     </div>
   );

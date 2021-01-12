@@ -10,7 +10,8 @@ export default class ImageGallery extends Component {
   state = {
     images: [],
     error: null,
-    status: 'idle'
+    status: 'idle',
+    currentPage: 1,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -21,7 +22,7 @@ export default class ImageGallery extends Component {
 
 
     if (prevName !== nextName) {
-      this.setState({images: [], currentPage: 1, status: 'pending' });  
+      this.setState({images: [],  status: 'pending' });  
     }
 
     if (prevName !== nextName || prevPage !== nextPage) {
@@ -37,11 +38,12 @@ export default class ImageGallery extends Component {
       .then(images => {
         this.setState(prevState => ({
           images: [...prevState.images, ...images.hits],
-          status: 'resolved'
+          status: 'resolved',
       }))})
   }
   
   onClickLoadMore = () => {
+    
     this.setState(prevState => ({
       currentPage: prevState.currentPage + 1,
     }));
